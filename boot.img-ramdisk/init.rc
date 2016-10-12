@@ -12,7 +12,6 @@ import /init.${ro.zygote}.rc
 import /init.trace.rc
 import /init.carrier.rc
 import /init.rilcommon.rc
-import /init.container.rc
 import /init.fac.rc
 import /init.sec_debug.rc
 
