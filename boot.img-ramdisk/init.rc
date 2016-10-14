@@ -567,11 +567,7 @@ on post-fs-data
     #setprop vold.post_fs_data_done 1
 
 on boot
-# KNOX KAP
-    chown system system /dev/knox_kap
-    chmod 0660 /dev/knox_kap
-
-    # basic network init
+#basic network init
     ifup lo
     hostname localhost
     domainname localdomain
@@ -1291,25 +1287,6 @@ service edmaudit /system/bin/edmaudit
 
 ## WTL_EDM_END
 
-# KNOX_KAP
-service kap_enable /sbin/knox_changer -e
-    class main
-    seclabel u:r:kapd:s0
-    disabled
-    oneshot
-
-service kap_disable /sbin/knox_changer -d
-    class main
-    seclabel u:r:kapd:s0
-    disabled
-    oneshot
-
-on property:security.knox_kap_mode=true
-    start kap_enable
-
-on property:security.knox_kap_mode=false
-    start kap_disable
-
 # SEC_SELINUX
 service auditd /system/bin/auditd -k
     class main
@@ -1329,50 +1306,6 @@ on property:sys.boot_completed=1
 on property:persist.security.mdm.policy=1
     setprop selinux.reload_policy 1
 # ] SEC_SELINUX_PORTING COMMON
-
-# AFW mode
-service afw_enable /sbin/knox_changer -f
-    class main
-    seclabel u:r:kapd:s0
-    disabled
-    oneshot
-
-service afw_disable /sbin/knox_changer -s
-    class main
-    seclabel u:r:kapd:s0
-    disabled
-    oneshot
-
-on property:security.knox_afw_mode=true
-    start afw_enable
-on property:security.knox_afw_mode=false
-    start afw_disable
-
-# UCS
-service ucs_enable /sbin/knox_changer -u
-    class main
-    seclabel u:r:kapd:s0
-    disabled
-    oneshot
-
-service ucs_disable /sbin/knox_changer -v
-    class main
-    seclabel u:r:kapd:s0
-    disabled
-    oneshot
-
-service ucs_reset /sbin/knox_changer -w
-    class main
-    seclabel u:r:kapd:s0
-    disabled
-    oneshot
-
-on property:security.knox_ucs_mode=true
-    start ucs_enable
-on property:security.knox_ucs_mode=false
-    start ucs_disable
-on property:security.knox_ucs_mode=reset
-    start ucs_reset
 
 on property:ro.debuggable=1
     start console
@@ -1440,10 +1373,6 @@ service vold /system/bin/vold \
     socket frigate stream 0660 system system
 
     socket cryptd stream 0660 root mount
-## Knox
-    socket epm stream 0660 system system
-    socket ppm stream 0660 system system
-    ioprio be 2
 ## Samsung ODE >>>
     socket dir_enc_report stream 0660 root mount
 ## Samsung ODE <<<

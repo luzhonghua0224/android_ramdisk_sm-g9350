@@ -1271,18 +1271,6 @@
 /dev/video5[0-2]        u:object_r:video_scaler_device:s0
 
 ############################# 
-# Device node of knox_common
-## Knox Sensitive data protection, DEK engine driver access
-/dev/dek_evt	u:object_r:knox_dar_device:s0
-/dev/dek_kek	u:object_r:knox_dar_device:s0
-/dev/dek_log	u:object_r:knox_dar_device:s0
-/dev/dek_req	u:object_r:knox_dar_shared_device:s0
-/dev/sdp_mm	u:object_r:knox_dar_device:s0
-/dev/knox_kap	u:object_r:knox_kap_device:s0
-
-/dev/sdp_dlp	u:object_r:knox_dar_device:s0
-
-############################# 
 # Device node of mobile_payments
 /dev/mst_ctrl	u:object_r:mst_ctrl_device:s0
 
@@ -1574,14 +1562,6 @@
 /system/lib(/.*)?	u:object_r:system_library_file:s0
 
 ############################# 
-# System files of knox_common
-# 
-/system/bin/auditd	u:object_r:auditd_exec:s0
-/system/bin/edmaudit	u:object_r:edmaudit_exec:s0
-/system/bin/epmd	u:object_r:epmd_exec:s0
-/system/bin/epmlogd	u:object_r:epmlogd_exec:s0
-
-############################# 
 # System files of qcom_common
 # 
 # conflict with Qcom BSP, /system/bin/adsprpcd	u:object_r:adsprpcd_exec:s0
@@ -1728,66 +1708,6 @@
 /data/\.otp\.info                                 u:object_r:wifiver_data_file:s0
 
 /data/EP_save\.bak                                 u:object_r:mediaserver_data_file:s0
-
-
-############################# 
-# DATA file of knox_common
-#
-/data/\.container_[1-9](/.*)?	u:object_r:container_app_data_backend:s0
-/data/clipboard/knox(/.*)?  u:object_r:knox_clipboard_file:s0
-/data/clipboard1[0-9][0-9](/.*)?  u:object_r:knox_clipboard_file:s0
-/data/container(/.*)?	u:object_r:container_app_data_backend:s0
-/data/container2\.0(/.*)?                              u:object_r:bbccontainer_app_data_backend:s0
-/data/knox_otp(/.*)?     u:object_r:otp_data_file:s0
-/data/knox(/.*)?	u:object_r:container_app_data_backend:s0
-/data/knox/data/19[5-9](/.*)?	        u:object_r:bbccontainer_app_data_backend:s0
-/data/knox/sdcard/19[5-9](/.*)?	        u:object_r:bbccontainer_app_data_backend:s0
-/data/knox/secure_fs/enc_media(/.*)?	        u:object_r:media_rw_data_file:s0
-#/data/knox/secure_fs/enc_user(/.*)?	        u:object_r:media_rw_data_file:s0
-
-/data/security/aasa(/.*)?               u:object_r:security_spota_file:s0
-/data/security/spota(/.*)?              u:object_r:security_spota_file:s0
-/data/system/container(/.*)?	u:object_r:container_system_file:s0
-
-# KNOX package root
-/data/user/1[0-8][0-9](/.*)?        u:object_r:container_app_data_backend:s0
-/data/user/19[0-4](/.*)?            u:object_r:container_app_data_backend:s0
-/data/user/19[5-9](/.*)?            u:object_r:bbccontainer_app_data_backend:s0
-
-# /mnt/runtime/
-/mnt/runtime/(default|read|write)/emulated/[0-9](/.*)?          u:object_r:media_rw_data_file:s0
-
-# /storage/emulated/
-/storage/emulated/[0-9](/.*)?             u:object_r:media_rw_data_file:s0
-
-/storage/(emulated|knox-emulated)/1[0-8][0-9](/.*)?               u:object_r:container_app_data_backend:s0
-/storage/(emulated|knox-emulated)/19[0-4](/.*)?                   u:object_r:container_app_data_backend:s0
-/storage/(emulated|knox-emulated)/19[5-9](/.*)?                   u:object_r:bbccontainer_app_data_backend:s0
-
-# /mnt/knox/
-/mnt/knox/(default|read|write)/(emulated|knox-emulated)/1[0-8][0-9](/.*)?            u:object_r:container_app_data_backend:s0
-/mnt/knox/(default|read|write)/(emulated|knox-emulated)/19[0-4](/.*)?                u:object_r:container_app_data_backend:s0
-/mnt/knox/(default|read|write)/(emulated|knox-emulated)/19[5-9](/.*)?                u:object_r:bbccontainer_app_data_backend:s0
-
-/mnt/shell/emulated/([1-9])?[0-9](/.*)?                    u:object_r:media_rw_data_file:s0
-/mnt/shell/emulated/1[0-8][0-9](/.*)?                      u:object_r:container_app_data_backend:s0
-/mnt/shell/emulated/19[0-4](/.*)?                          u:object_r:container_app_data_backend:s0
-/mnt/shell/emulated/19[5-9](/.*)?                          u:object_r:bbccontainer_app_data_backend:s0
-/mnt/shell/enc_emulated/[0-9](/.*)?                        u:object_r:media_rw_data_file:s0
-/mnt/shell/enc_media/[0-9](/.*)?                           u:object_r:media_rw_data_file:s0
-/mnt/shell/knox-emulated/1[0-8][0-9](/.*)?                 u:object_r:container_app_data_backend:s0
-/mnt/shell/knox-emulated/19[0-4](/.*)?                     u:object_r:container_app_data_backend:s0
-/mnt/shell/knox-emulated/19[5-9](/.*)?                     u:object_r:bbccontainer_app_data_backend:s0
-#/mnt/user/1[0-8][0-9](/.*)?           u:object_r:container_app_data_backend:s0
-#/mnt/user/19[0-4](/.*)?               u:object_r:container_app_data_backend:s0
-#/mnt/user/19[5-9](/.*)?               u:object_r:bbccontainer_app_data_backend:s0
-
-# AfW
-/data/media/[1-9][0-9](/.*)?                                         u:object_r:container_app_data_backend:s0
-/mnt/runtime/(default|read|write)/emulated/[1-9][0-9](/.*)?          u:object_r:container_app_data_backend:s0
-/mnt/shell/enc_emulated/[1-9][0-9](/.*)?                             u:object_r:container_app_data_backend:s0
-/mnt/shell/enc_media/[1-9][0-9](/.*)?                                u:object_r:container_app_data_backend:s0
-/storage/emulated/[1-9][0-9](/.*)?                                   u:object_r:container_app_data_backend:s0
 
 ############################# 
 # DATA file of qcom_common
