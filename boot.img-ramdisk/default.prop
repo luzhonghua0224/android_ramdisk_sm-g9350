@@ -34,7 +34,7 @@ ro.bootimage.build.date=Fri Aug 19 15:50:34 KST 2016
 ro.bootimage.build.date.utc=1471589434
 ro.bootimage.build.fingerprint=samsung/hero2qltezh/hero2qltechn:6.0.1/MMB29M/G9350ZHS2APH2:user/test-keys
 # Fix allshare
-#wlan.wfd.hdcp=disable
+wlan.wfd.hdcp=disable
 #
 # WiFi fix
 ro.config.dmverity=false
