@@ -29,8 +29,6 @@ on early-init
 on init
     sysclktz 0
 
-    ffu
-
 #Reactivation Lock
     symlink /dev/block/platform/soc/624000.ufshc/by-name/steady /dev/block/steady
     # SEC_SELINUX
@@ -1245,15 +1243,6 @@ service healthd /sbin/healthd
 service lpm /system/bin/lpm
     class charger
     critical
-
-# Emergency Firmware Update
-service fwup /sbin/ffu -a
-    class firmware_update
-    user root
-    group root
-    seclabel u:r:ffu:s0
-    critical
-    oneshot
 
 service prepare_param /system/bin/prepare_param.sh /dev/block/platform/soc/624000.ufshc/by-name/param
     class core
