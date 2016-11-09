@@ -1469,7 +1469,7 @@
 ############################# 
 # System files of sec_common
 # 
-/sbin/dm_verity_signature_checker	u:object_r:dm_verity_signature_checker_exec:s0
+# /sbin/dm_verity_signature_checker	u:object_r:dm_verity_signature_checker_exec:s0
 
 /system/bin/reactived	u:object_r:actlmand_exec:s0
 /system/bin/androidshmservice	u:object_r:androidshmservice_exec:s0
