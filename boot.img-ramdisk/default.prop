@@ -36,7 +36,7 @@ ro.bootimage.build.fingerprint=samsung/hero2qltezh/hero2qltechn:6.0.1/MMB29M/G93
 # Fix allshare
 wlan.wfd.hdcp=disable
 #
-# WiFi fix
+# WiFi fix & Security
 ro.config.dmverity=false
 ro.securestorage.support=false
 ro.config.tima=0
